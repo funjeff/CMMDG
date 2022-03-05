@@ -62,9 +62,9 @@ public class GameCode {
 		r.setY(120);
 		r.declare();
 		playableR = r;
-		c = new GameController();
-		Drill d = new Drill();
-		d.spawnHazard();
+	//	c = new GameController();
+		Car c = new Car();
+		c.spawnHazard();
 	}
 		
 	
@@ -73,10 +73,10 @@ public class GameCode {
 		frameCount = frameCount + 1;
 		ObjectHandler.callAll();
 		
-		if (frameCount > previousNewscast + 150) {
-			c.attemptNewscast();
-			previousNewscast = frameCount;
-		}
+//		if (frameCount > previousNewscast + 150) {
+//			c.attemptNewscast();
+//			previousNewscast = frameCount;
+//		}
 		
 	}
 	

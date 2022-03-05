@@ -4,22 +4,27 @@ import engine.GameObject;
 import engine.Sprite;
 
 public class Warning extends GameObject {
-<<<<<<< HEAD
-	int timeLeft = 0;
+	int despawnTimer = 0;
+	int ogTime = 0;
 	public Warning (int time) {
-		time = timeLeft;
+		ogTime = time;
 		this.setSprite(new Sprite ("resources/sprites/Warning.png"));
 	}
-
-=======
-
 	
-	
-	public Warning(int xpos, int ypos)
-	{
-		this.setX(xpos);
-		this.setY(ypos);
+	@Override
+	public void frameEvent () {
+		if (despawnTimer != ogTime) {
+			despawnTimer = despawnTimer + 1;
+		} else {
+			this.forget();
+		}
+		if (despawnTimer % (ogTime/despawnTimer) == 0) {
+			this.visible = !this.visible;
+		}
 	}
 	
->>>>>>> 5d35381f2ae950ac91681aa9b86f9ca82cdeb675
+	public boolean isDone () {
+		return despawnTimer == ogTime;
+	}
+	
 }

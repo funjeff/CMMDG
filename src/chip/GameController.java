@@ -12,7 +12,7 @@ import hazards.Tornado;
 
 public class GameController {
 	
-	int AILevel = 15;
+	int AILevel = 12;
 	int newsCasts = 0;
 	
 	Chip c;
@@ -28,7 +28,7 @@ public class GameController {
 	public void attemptNewscast() {
 		Random r = new Random ();
 		newsCasts = newsCasts + 1;
-		if (newsCasts >= 20-AILevel) {
+		if (newsCasts >= (20-AILevel)/2) {
 			levelUp();
 		}
 		if (r.nextInt(19) + 1 <= 20 - AILevel) {
