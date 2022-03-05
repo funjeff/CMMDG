@@ -3,6 +3,7 @@ package chip;
 import java.util.Random;
 
 import hazards.Car;
+import hazards.Drill;
 import hazards.Flood;
 import hazards.Meteor;
 import hazards.Pointer;
@@ -14,7 +15,13 @@ public class GameController {
 	int AILevel = 15;
 	int newsCasts = 0;
 	
+	Chip c;
+	
 	public GameController () {
+		c = new Chip();
+		c.declare();
+		c.setX(270);
+		c.setY(40);
 		
 	}
 	
@@ -58,6 +65,10 @@ public class GameController {
 			case 6:
 				Tornado t = new Tornado (r.nextBoolean());
 				t.declare();
+				break;
+			case 7:
+				Drill d = new Drill();
+				d.spawnHazard();
 				break;
 		}
 	}

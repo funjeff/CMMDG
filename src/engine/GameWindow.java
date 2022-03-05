@@ -51,7 +51,6 @@ public class GameWindow extends JFrame {
 	 */
 	private InputManager inputManager;
 	
-	JLabel chip = new JLabel ();
 	
 	/**
 	 * Constructs a new GameWindow with the given width and height.
@@ -75,9 +74,6 @@ public class GameWindow extends JFrame {
 		nonScallableBuffer = new BufferedImage (width, height, BufferedImage.TYPE_4BYTE_ABGR);
 		//Sets up the input detection
 		inputManager = new InputManager (this, this.getContentPane ());
-		Icon i = new ImageIcon("resources/gifs/test.gif");
-		chip.setIcon(i);
-		this.getContentPane().add(chip);
 	}
 	
 	/**
@@ -110,7 +106,7 @@ public class GameWindow extends JFrame {
 		Graphics bufferGraphics = getBufferGraphics ();
 		tempGraphics.drawImage (buffer, 0, 0, getContentPane().getSize().width,getContentPane().getSize().height, null);	
 		
-		bufferGraphics.setColor (new Color (0xC0C0C0));
+		bufferGraphics.setColor (new Color (0x185ac4));
 		bufferGraphics.fillRect (0, 0, buffer.getWidth (), buffer.getHeight ());
 	}
 	
@@ -170,7 +166,7 @@ public class GameWindow extends JFrame {
 		
 		Graphics bufferGraphics = buffer.getGraphics();
 		
-		bufferGraphics.setColor (new Color (0xC0C0C0));
+		bufferGraphics.setColor (new Color (0x185ac4));
 		bufferGraphics.fillRect (0, 0, buffer.getWidth (), buffer.getHeight ());
 	}
 	
