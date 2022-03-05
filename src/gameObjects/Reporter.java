@@ -136,7 +136,6 @@ public class Reporter extends GameObject {
 	}
 	
 	public void getKilled () {
-		System.out.println("eb");
 		
 	}
 	public boolean isUnderwater() {

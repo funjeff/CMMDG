@@ -1,0 +1,2 @@
+$src resources/sprites/border-Sheet.png
+grid 256 256;
