@@ -17,7 +17,9 @@ import java.util.Scanner;
 
 import gameObjects.Reporter;
 import hazards.Car;
+import hazards.Flood;
 import hazards.Meteor;
+import hazards.Pointer;
 import hazards.Shark;
 import map.Room;
 
@@ -46,14 +48,14 @@ public class GameCode {
 	}
 
 	public static void init () {
-		Room.loadRoom("resources/maps/test.rmf");
+		Room.loadRoom("resources/maps/background.rmf");
 		Reporter r = new Reporter ();
 		r.setX(130);
 		r.setY(120);
 		r.declare();
 		playableR = r;
-		Car c = new Car(false,false);
-		c.declare();
+		Pointer p = new Pointer();
+		p.declare();
 	}
 		
 	
@@ -66,8 +68,8 @@ public class GameCode {
 	}
 	
 	public static void renderFunc () {
-		ObjectHandler.renderAll();
 		Room.render();
+		ObjectHandler.renderAll();
 	}
 	
 	public static void beforeRender() {

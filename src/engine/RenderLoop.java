@@ -24,7 +24,7 @@ public class RenderLoop {
 	 */
 	static private long frameTime;
 	
-	public static final GameWindow wind = new GameWindow (960, 540);
+	public static final GameWindow wind = new GameWindow (540, 340);
 	
 	public static void main (String[] args) {
 		//Sets the initial frame time

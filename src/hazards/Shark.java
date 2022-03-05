@@ -11,7 +11,7 @@ public class Shark extends Hazard{
 //	int originalX = 0;
 //	int originalY = 0;
 	int yDisplace = 50;
-	int xDisplace = 360;
+	int xDisplace = 245;
 	
 	int totalMoveX = 0;
 	int totalMoveY = 0;
@@ -29,12 +29,12 @@ public class Shark extends Hazard{
 //		originalX = 200; // change this later
 //		originalY = 200;
 		
-		this.setY(400);
-		this.setX(400);
+		this.setY(200);
+		this.setX(245);
 		this.getAnimationHandler().setFlipHorizontal(true);
 		if (flip) {
 			this.getAnimationHandler().setFlipHorizontal(false);
-			this.setX(50);
+			this.setX(0);
 //			angle = 90;
 //			originalX = 0;
 		}

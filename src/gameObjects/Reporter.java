@@ -18,18 +18,30 @@ public class Reporter extends GameObject {
 	public static final double TERMINAL_VELOCITY = 15;
 	public static final double JUMP_VELOCITY = 12.15625;
 	
+	
+	boolean underwater = false;
+	
+
+
+
 	public Reporter() {
-		this.setSprite(new Sprite ("resources/sprites/reporter.png"));
+		this.setSprite(new Sprite ("resources/sprites/MCIdle.txt"));
 		this.setHitboxAttributes(4, 4, 7, 27);
 	}
 	
 	
 	@Override
 	public void frameEvent () {
+		
+		
 		if (keyDown(32) && !isJumping && vy == 0) {
 			
 			isJumping = true;
-			vy = -JUMP_VELOCITY;
+			if (!underwater) {
+				vy = -JUMP_VELOCITY;
+			} else {
+				vy = -15;
+			}
 			//setSprite (walkSprite);
 			//getAnimationHandler ().setFrameTime (0);
 			//getAnimationHandler ().setAnimationFrame (3);
@@ -38,26 +50,26 @@ public class Reporter extends GameObject {
 		//moves left and right
 		if ( keyDown ('A')) {
 			vx = -4;
-			this.getAnimationHandler().setFlipHorizontal (true);
+			this.getAnimationHandler().setFlipHorizontal (false);
 			if (vy == 0 && !isWalking) {
 				isWalking = true;
-				//setSprite (walkSprite);
+				setSprite (new Sprite("resources/sprites/MCWalk.txt"));
 			}
 		} else if (keyDown ('D')) {
 			
 			vx = 4;
 			
 			
-			this.getAnimationHandler().setFlipHorizontal (false);
+			this.getAnimationHandler().setFlipHorizontal (true);
 			
 			if (vy == 0 && !isWalking) {
 				isWalking = true;
-				//setSprite (walkSprite);
+				setSprite (new Sprite("resources/sprites/MCWalk.txt"));
 			}
 		} else {
 			if (isWalking) {
 				isWalking = false;
-				//setSprite (standSprite);
+				setSprite (new Sprite("resources/sprites/MCIdle.txt"));
 			}
 		}
 		
@@ -96,7 +108,7 @@ public class Reporter extends GameObject {
 				        this.vy = 0;
 				    	getAnimationHandler ().setFrameTime (50);
 				    	if (isJumping) {
-				    		//this.setSprite(standSprite);
+				    		setSprite (new Sprite("resources/sprites/MCIdle.txt"));
 				    		isWalking = false;
 				    	}
 				        isJumping = false;
@@ -113,9 +125,29 @@ public class Reporter extends GameObject {
 				vx = 0;
 			}
 	}
+	@Override
+	public boolean goX (double newPos) {
+		if (newPos < 0 || newPos > 245) {
+			return false;
+		}
+		setX(newPos);
+		return true;
+	}
+	
+	public double getVy() {
+		return vy;
+	}
 	
 	public void getKilled () {
 		
+	}
+	public boolean isUnderwater() {
+		return underwater;
+	}
+
+
+	public void setUnderwater(boolean underwater) {
+		this.underwater = underwater;
 	}
 	
 }

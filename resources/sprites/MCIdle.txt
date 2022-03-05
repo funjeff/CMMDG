@@ -1,0 +1,3 @@
+$src resources/sprites/MC_Startup_Animation.png
+
+rectangle 0 0 12 26

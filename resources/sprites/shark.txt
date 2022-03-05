@@ -1,2 +1,2 @@
-$src resources/sprites/sharksheet.png
-grid 32 32;
+$src resources/sprites/sharksheetlarge.png
+grid 64 32;

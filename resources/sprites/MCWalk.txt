@@ -1,0 +1,2 @@
+$src resources/sprites/MC_Startup_Animation.png
+grid 12 26;

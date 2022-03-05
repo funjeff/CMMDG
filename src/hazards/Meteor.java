@@ -28,7 +28,8 @@ public class Meteor extends Hazard{
 			}
 			vy = vy + ay;
 			this.setY(this.getY() + vy);
-			if (Room.isColliding(this)) {
+			if (this.getY() > 280) {
+				
 				this.forget();
 			}
 		} else {
@@ -48,12 +49,12 @@ public class Meteor extends Hazard{
 	public void spawnHazard()
 	{
 		Random r = new Random ();
-		int amountOfMetors = r.nextInt(4) + 1;
+		int amountOfMetors = r.nextInt(14) + 5;
 		for (int i = 0; i < amountOfMetors;i++) {
 			Meteor m = new Meteor ();
 			m.declare();
-			m.setX(r.nextInt(400));
-			m.setY(150);
+			m.setX(r.nextInt(245));
+			m.setY(0);
 			m.delay = r.nextInt(100);
 		
 		}

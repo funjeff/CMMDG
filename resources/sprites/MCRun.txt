@@ -1,0 +1,2 @@
+$src resources/sprites/MC_Full_Sprint_Animation.png
+grid 12 26;

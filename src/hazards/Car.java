@@ -7,12 +7,11 @@ public class Car extends Hazard {
 	
 	public Car () {
 		this.setX(0);
-		this.setY(400);
 	}
 	
 	public Car (boolean flip, boolean sprite) {
 		this.setX(0);
-		this.setY(350);
+		this.setY(160);
 		if (sprite) {
 			this.setSprite(new Sprite("resources/sprites/policeCar.txt"));
 			this.getAnimationHandler().setFrameTime(100);
@@ -21,7 +20,7 @@ public class Car extends Hazard {
 		}
 		this.getAnimationHandler().setFlipHorizontal(true);
 		if (flip) {
-			this.setX(350);
+			this.setX(245);
 			this.getAnimationHandler().setFlipHorizontal(false);
 		}
 	}
@@ -35,7 +34,7 @@ public class Car extends Hazard {
 			}
 		} else {
 			this.setX(this.getX() + 20);
-			if (this.getX() >  400) {
+			if (this.getX() >  245) {
 				forget();
 			}
 		}
