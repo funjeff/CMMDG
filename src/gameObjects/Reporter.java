@@ -37,11 +37,7 @@ public class Reporter extends GameObject {
 		if (keyDown(32) && !isJumping && vy == 0) {
 			
 			isJumping = true;
-			if (!underwater) {
-				vy = -JUMP_VELOCITY;
-			} else {
-				vy = -15;
-			}
+			vy = -JUMP_VELOCITY;
 			//setSprite (walkSprite);
 			//getAnimationHandler ().setFrameTime (0);
 			//getAnimationHandler ().setAnimationFrame (3);
@@ -73,11 +69,11 @@ public class Reporter extends GameObject {
 			}
 		}
 		
-		if (keyDown(32)) {
-			vy += Room.getGravity ();
-		} else {
-			vy += (Room.getGravity ());
-		}
+			if (!underwater) {
+				vy += Room.getGravity ();
+			} else {
+				vy += Room.getGravity()-.3;
+			}
 	
 		if (vy > TERMINAL_VELOCITY) {
 			vy = TERMINAL_VELOCITY;
@@ -89,7 +85,7 @@ public class Reporter extends GameObject {
 			//deals with friction and getting stuck in the floor
 			if (Room.isColliding(this)) {
 				vy = 0;
-				double fc = .2; //Friction coefficient\
+				double fc = .6; //Friction coefficient\
 				if (vx > 0) {
 					vx -= fc;
 					if (vx < 0) {

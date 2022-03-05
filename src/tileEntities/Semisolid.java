@@ -14,7 +14,7 @@ public class Semisolid extends TileEntitiy{
 		
 		if (o instanceof Reporter) {
 		Reporter j = (Reporter) o;
-		if (j.getVy() < 0 || (j.getYPrevious() + j.hitbox().height > this.getY() * 16)){
+		if ((j.getVy() < 0 || (j.getYPrevious() + j.hitbox().height > this.getY() * 16)) || o.keyDown ('S') ){
 			return false;
 		} 
 			return true;

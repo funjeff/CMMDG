@@ -19,7 +19,10 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 /**
  * The window which the game is displayed in. Also handles keyboard and mouse events.
@@ -48,6 +51,8 @@ public class GameWindow extends JFrame {
 	 */
 	private InputManager inputManager;
 	
+	JLabel chip = new JLabel ();
+	
 	/**
 	 * Constructs a new GameWindow with the given width and height.
 	 * @param width The initial width, in pixels, of the window content
@@ -70,6 +75,9 @@ public class GameWindow extends JFrame {
 		nonScallableBuffer = new BufferedImage (width, height, BufferedImage.TYPE_4BYTE_ABGR);
 		//Sets up the input detection
 		inputManager = new InputManager (this, this.getContentPane ());
+		Icon i = new ImageIcon("resources/gifs/test.gif");
+		chip.setIcon(i);
+		this.getContentPane().add(chip);
 	}
 	
 	/**
@@ -82,7 +90,6 @@ public class GameWindow extends JFrame {
 		
 		
 		BufferedImage temp = new BufferedImage (getContentPane().getSize().width,getContentPane().getSize().height, BufferedImage.TYPE_4BYTE_ABGR);
-		
 		Graphics tempGraphics = temp.getGraphics();
 		refreshScalableBuffer(tempGraphics);
 		refreshForignBuffer(tempGraphics);

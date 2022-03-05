@@ -1,4 +1,2 @@
-$src resources/sprites/carsheet.png
- 
-rectangle 32 64 32 64:
-	grid 32 32;
+$src resources/sprites/policeCars.png
+grid 32 32

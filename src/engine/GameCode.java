@@ -15,12 +15,13 @@ import java.util.LinkedList;
 import java.util.Random;
 import java.util.Scanner;
 
+import chip.Chip;
 import gameObjects.Reporter;
 import hazards.Car;
 import hazards.Flood;
 import hazards.Meteor;
-import hazards.Pointer;
 import hazards.Shark;
+import hazards.Tornado;
 import map.Room;
 
 
@@ -33,6 +34,7 @@ public class GameCode {
 	static long frameCount = 0;
 	
 	static Reporter playableR;
+	static Chip chip;
 
 	public static void testBitch () {
 		
@@ -54,8 +56,8 @@ public class GameCode {
 		r.setY(120);
 		r.declare();
 		playableR = r;
-		Pointer p = new Pointer();
-		p.declare();
+		Tornado t = new Tornado(true);
+		t.declare();
 	}
 		
 	
