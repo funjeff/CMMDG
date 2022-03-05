@@ -23,6 +23,8 @@ import hazards.Flood;
 import hazards.Meteor;
 import hazards.Shark;
 import hazards.Tornado;
+import hazards.Drill;
+import hazards.Gnome;
 import map.Room;
 
 
@@ -61,6 +63,8 @@ public class GameCode {
 		r.declare();
 		playableR = r;
 		c = new GameController();
+		Drill d = new Drill();
+		d.spawnHazard();
 	}
 		
 	
@@ -69,7 +73,7 @@ public class GameCode {
 		frameCount = frameCount + 1;
 		ObjectHandler.callAll();
 		
-		if (frameCount > previousNewscast + 60) {
+		if (frameCount > previousNewscast + 150) {
 			c.attemptNewscast();
 			previousNewscast = frameCount;
 		}
