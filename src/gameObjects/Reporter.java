@@ -45,7 +45,7 @@ public class Reporter extends GameObject {
 		
 		//moves left and right
 		if ( keyDown ('A')) {
-			vx = -4;
+			vx = -3;
 			this.getAnimationHandler().setFlipHorizontal (false);
 			if (vy == 0 && !isWalking) {
 				isWalking = true;
@@ -53,7 +53,7 @@ public class Reporter extends GameObject {
 			}
 		} else if (keyDown ('D')) {
 			
-			vx = 4;
+			vx = 3;
 			
 			
 			this.getAnimationHandler().setFlipHorizontal (true);
@@ -130,11 +130,13 @@ public class Reporter extends GameObject {
 		return true;
 	}
 	
+	
 	public double getVy() {
 		return vy;
 	}
 	
 	public void getKilled () {
+		System.out.println("eb");
 		
 	}
 	public boolean isUnderwater() {

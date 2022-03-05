@@ -11,10 +11,9 @@ public class Semisolid extends TileEntitiy{
 	}
 	@Override 
 	public boolean doesColide (GameObject o) {
-		
 		if (o instanceof Reporter) {
 		Reporter j = (Reporter) o;
-		if ((j.getVy() < 0 || (j.getYPrevious() + j.hitbox().height > this.getY() * 16)) || o.keyDown ('S') ){
+		if ((j.getVy() < 0 || (j.getYPrevious() + j.hitbox().height > this.getY() * 16)) || (o.keyDown ('S') && this.getY() != 14) ){
 			return false;
 		} 
 			return true;

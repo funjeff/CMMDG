@@ -16,6 +16,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 import chip.Chip;
+import chip.GameController;
 import gameObjects.Reporter;
 import hazards.Car;
 import hazards.Flood;
@@ -32,9 +33,12 @@ public class GameCode {
 	static int veiwY;
 	
 	static long frameCount = 0;
+	static long previousNewscast = 0;
 	
 	static Reporter playableR;
 	static Chip chip;
+	
+	static GameController c;
 
 	public static void testBitch () {
 		
@@ -56,8 +60,7 @@ public class GameCode {
 		r.setY(120);
 		r.declare();
 		playableR = r;
-		Tornado t = new Tornado(true);
-		t.declare();
+		c = new GameController();
 	}
 		
 	
@@ -66,6 +69,10 @@ public class GameCode {
 		frameCount = frameCount + 1;
 		ObjectHandler.callAll();
 		
+		if (frameCount > previousNewscast + 60) {
+			c.attemptNewscast();
+			previousNewscast = frameCount;
+		}
 		
 	}
 	

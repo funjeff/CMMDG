@@ -10,12 +10,16 @@ public class Tornado extends Hazard {
 		this.setSprite(new Sprite ("resources/sprites/Tornado.txt"));
 		this.getAnimationHandler().setFrameTime(100);
 		this.setHitbox(0,101, 128,155);
+		this.enablePixelCollisions();
 	}
 	
 	public Tornado (boolean flip) {
 		this.setSprite(new Sprite ("resources/sprites/Tornado.txt"));
 		this.getAnimationHandler().setFrameTime(100);
 		this.setHitbox(0,101, 128,155);
+		this.setY(-100);
+		this.enablePixelCollisions();
+		
 		if (flip) {
 			this.setX(0);
 			this.flip = true;
@@ -26,10 +30,9 @@ public class Tornado extends Hazard {
 
 	@Override
 	public void frameEvent () {
-		System.out.println(flip);
 		if (flip) {
 			this.setX(this.getX() + 1);
-			if (this.getX() > 245) {	
+			if (this.getX() > 190) {	
 				this.forget();
 			}
 		} else {
