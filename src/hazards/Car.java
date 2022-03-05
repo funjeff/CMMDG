@@ -9,6 +9,7 @@ public class Car extends Hazard {
 	
 	int delay = 0;
 	
+	
 	public Car () {
 		this.setX(0);
 	}

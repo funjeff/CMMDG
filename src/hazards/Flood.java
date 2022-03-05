@@ -13,6 +13,7 @@ public class Flood extends Hazard{
 		this.setY(280);
 		Random r = new Random ();
 		underwaterTime = r.nextInt(120) + 60;
+		this.setRenderPriority(10);
 	}
 	
 	@Override
