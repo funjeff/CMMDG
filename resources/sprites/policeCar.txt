@@ -1,0 +1,4 @@
+$src resources/sprites/carsheet.png
+ 
+rectangle 32 64 32 64:
+	grid 32 32;
