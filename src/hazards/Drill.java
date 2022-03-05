@@ -21,7 +21,17 @@ public class Drill extends Hazard {
 	@Override
 	public void frameEvent () {
 		super.frameEvent();
-		
+		boolean spawnedGnome = true;
+		if (this.getAnimationHandler().getFrame() >= 32)
+		{
+			forget();
+		}
+		if (this.getAnimationHandler().getFrame() >= 29 && spawnedGnome)
+		{
+			Gnome g = new Gnome();
+			g.declare();
+			spawnedGnome = false;
+		}
 		
 	}
 	
