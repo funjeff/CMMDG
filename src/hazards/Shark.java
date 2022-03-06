@@ -18,13 +18,13 @@ public class Shark extends Hazard{
 	int totalMoveY = 0;
 	
 	public Shark () {
+		GameCode.getSoundPlayer().playSoundEffect(3f, "resources/sounds/Shark_exiting_water.wav");
 		this.setSprite(new Sprite ("resources/sprites/shark.txt"));
-		this.setHitbox(0,0,32,32);
-		GameCode.getSoundPlayer().playSoundEffect(6f, "resources/sounds/Shark_exiting_water.wav");
-		
+		this.setHitbox(0,0,32,32);		
 	}
 	
 	public Shark (boolean flip) {
+		GameCode.getSoundPlayer().playSoundEffect(3f, "resources/sounds/Shark_exiting_water.wav");
 		this.setSprite(new Sprite ("resources/sprites/shark.txt"));
 		this.setHitbox(0,0,32,32);
 		this.getAnimationHandler().setFrameTime(100);
@@ -41,6 +41,7 @@ public class Shark extends Hazard{
 //			angle = 90;
 //			originalX = 0;
 		}
+		
 	}
 	
 	

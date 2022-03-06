@@ -12,7 +12,7 @@ public class Hazard extends GameObject {
 
 	@Override
 	public void frameEvent () {
-		if (this.isColliding(GameCode.getReporter())) {
+		if ((GameCode.getReporter().isColliding(this))) {
 			GameCode.getReporter().getKilled();
 		}
 	}

@@ -2,6 +2,7 @@ package hazards;
 
 import java.util.Random;
 
+import engine.GameCode;
 import engine.Sprite;
 import gameObjects.Warning;
 import map.Room;
@@ -14,6 +15,7 @@ public class Meteor extends Hazard{
 	double ay = 0.0;
 	
 	public Meteor() {
+		GameCode.getSoundPlayer().playSoundEffect(1f, "resources/sounds/Short_Meteorite_Shower.wav");
 		Random r = new Random();
 		this.setSprite(new Sprite ("resources/sprites/meteorite" + (r.nextInt(3) + 1) + ".png"));
 		this.setHitbox(0,0,32,32);
@@ -25,7 +27,6 @@ public class Meteor extends Hazard{
 		if (warn.isDone())
 		{
 			if (delay == 0) {
-				
 				
 				if (ay < 2) {
 					ay = ay + 0.1;

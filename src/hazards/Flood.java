@@ -14,6 +14,7 @@ public class Flood extends Hazard{
 		Random r = new Random ();
 		underwaterTime = r.nextInt(120) + 60;
 		this.setRenderPriority(10);
+		GameCode.getSoundPlayer().playSoundEffect(6f, "resources/sounds/Ocean waves crashing.wav");
 	}
 	
 	@Override

@@ -2,6 +2,7 @@ package hazards;
 
 import java.util.Random;
 
+import engine.GameCode;
 import engine.Sprite;
 import gameObjects.Warning;
 
@@ -29,6 +30,7 @@ public class Car extends Hazard {
 			this.setX(245);
 			this.getAnimationHandler().setFlipHorizontal(false);
 		}
+		GameCode.getSoundPlayer().playSoundEffect(0.025f, "resources/sounds/Police Siren - Sound Effect.wav");
 	}
 	
 	@Override
@@ -65,7 +67,7 @@ public class Car extends Hazard {
 		Random r = new Random ();
 		boolean direction = r.nextBoolean();
 		Car regularCar = new Car (direction,false);
-		regularCar.declare();
+		
 		
 		if (direction == false)
 		{
@@ -78,16 +80,16 @@ public class Car extends Hazard {
 		} else {
 			regularCar.warn.declare(regularCar.getX(), regularCar.getY());
 		}
-		
+		regularCar.declare();
 		
 		int amountOfMetors = r.nextInt(5) + 3;
 		for (int i = 0; i < amountOfMetors;i++) {
 			Car c = new Car (direction, true);
-			c.declare();
+			
 			c.setY(160 + (r.nextInt(30) - 15));
 			c.delay = r.nextInt(100) + 100;
 			c.warn = new Warning (0, 0);
-		
+			c.declare();
 		}
 	}
 	

@@ -1,5 +1,6 @@
 package hazards;
 
+import engine.GameCode;
 import engine.Sprite;
 
 public class Tornado extends Hazard {
@@ -26,6 +27,7 @@ public class Tornado extends Hazard {
 		} else {
 			this.setX(245);
 		}
+		GameCode.getSoundPlayer().playSoundEffect(6f, "resources/sounds/Tornado Sound Effect.wav");
 	}
 
 	@Override
