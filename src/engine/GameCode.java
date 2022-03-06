@@ -63,7 +63,9 @@ public class GameCode {
 	public static void afterGameLogic () {
 		
 	}
-
+	public static void displayTitleScreen() {
+		
+	}
 	public static void init () {
 		Room.loadRoom("resources/maps/background.rmf");
 		Reporter r = new Reporter();
