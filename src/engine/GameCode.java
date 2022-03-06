@@ -66,13 +66,13 @@ public class GameCode {
 
 	public static void init () {
 		Room.loadRoom("resources/maps/background.rmf");
-		Reporter r = new Reporter ();
+		Reporter r = new Reporter();
 		r.setX(130);
 		r.setY(120);
 		r.declare();
 		playableR = r;
 		c = new GameController();
-		s = new SoundPlayer ();
+		s = new SoundPlayer();
 		textTicker = new Sprite ("resources/sprites/scrollingtextbox.png");
 		ticker = new ScrollingText();
 		ticker.fillText();
