@@ -17,6 +17,7 @@ import javax.imageio.ImageIO;
 
 
 
+
 /**
  * Represents a drawable image
  * @author nathan
@@ -120,7 +121,6 @@ public class Sprite {
 		File imageFile = new File (imagepath);
 		BufferedImage img = null;
 		try {
-			System.out.println(imagepath);
 			img = ImageIO.read (imageFile);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -234,13 +234,13 @@ public class Sprite {
 			draw (x, y, frame, transform);
 	}
 	public void draw (double usedX, double usedY, int frame, AffineTransform transform) {
-		Graphics2D windowGraphics;
+		Graphics2D windGraphics;
 			if (doesScale) {
-				windowGraphics = (Graphics2D)RenderLoop.wind.getBufferGraphics ();
+				windGraphics = (Graphics2D)RenderLoop.wind.getBufferGraphics ();
 			} else {
-				windowGraphics = (Graphics2D)RenderLoop.wind.getNonscalableGraphics ();
+				windGraphics = (Graphics2D)RenderLoop.wind.getNonscalableGraphics ();
 			}
-			windowGraphics.drawImage (getFrame (frame), transform, null);
+			windGraphics.drawImage (getFrame (frame), transform, null);
 	}
 	/**
 	 * Draws the given frame of this sprite at the given x and y coordinates.
@@ -458,16 +458,7 @@ public class Sprite {
 		return parsePath;
 	}
 
-	public static void scale (Sprite toScale, int width, int height) {
-		for (int i = 0; i < toScale.getFrameCount(); i++) {
-			Image img = toScale.getFrame(i).getScaledInstance(width, height, Image.SCALE_FAST);
-			BufferedImage bimage = new BufferedImage(img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB);
-			Graphics2D bGr = bimage.createGraphics();
-		    bGr.drawImage(img, 0, 0, null);
-		    bGr.dispose();
-			toScale.setFrame(i,bimage);
-		}
-	}
+
 	/**
 	 * Gets the BufferedImage associated with the given filepath.
 	 * @param path the filepath to use
@@ -510,6 +501,20 @@ public class Sprite {
 		this.setFrame(frame, newImg);
 	}
 	
+	public static BufferedImage [] scale (Sprite toScale, int width, int height) {
+		
+		BufferedImage [] buff = new BufferedImage [toScale.getFrameCount()];
+		
+		for (int i = 0; i < toScale.getFrameCount(); i++) {
+			Image img = toScale.getFrame(i).getScaledInstance(width, height, Image.SCALE_FAST);
+			BufferedImage bimage = new BufferedImage(img.getWidth(null), img.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+			Graphics2D bGr = bimage.createGraphics();
+		    bGr.drawImage(img, 0, 0, null);
+		    
+		    buff[i] = bimage;
+		}
+		return buff;
+	}
 	private static class CacheNode {
 		
 		/**

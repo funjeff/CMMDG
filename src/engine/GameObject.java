@@ -1026,7 +1026,6 @@ public abstract class GameObject extends GameAPI {
 		if (this.getSpriteX() - this.getX() != 0) {
 			this.desyncSpriteX(0);
 		}
-		sprite.setScale(doesScale);
 		animationHandler.resetImage (sprite);
 		if (spriteHitbox) {
 			this.setHitboxAttributes(0, 0, this.getSprite().getWidth(), this.getSprite().getHeight());
@@ -1036,12 +1035,12 @@ public abstract class GameObject extends GameAPI {
 		return doesScale;
 	}
 
-	public void setScaleing(boolean doesScale) {
-		this.doesScale = doesScale;
-		if (this.getSprite() != null) {
-			this.getSprite().setScale(doesScale);
-		}
-	}
+//	public void setScaleing(boolean doesScale) {
+//		this.doesScale = doesScale;
+//		if (this.getSprite() != null) {
+//			this.getSprite().setScale(doesScale);
+//		}
+//	}
 
 	//changes the hitbox to another one when the sprite gets bigger
 	//based off of length of xOffset array
