@@ -22,6 +22,7 @@ import gameObjects.Reporter;
 import hazards.Car;
 import hazards.Cats;
 import hazards.Flood;
+import hazards.FloridaMan;
 import hazards.Meteor;
 import hazards.Shark;
 import hazards.Tornado;
