@@ -1,5 +1,6 @@
 package gameObjects;
 
+import engine.GameCode;
 import engine.GameObject;
 import engine.Sprite;
 
@@ -7,6 +8,7 @@ public class Warning extends GameObject {
 	int direction;
 	int despawnTimer = 0;
 	int ogTime = 0;
+	static int soundsPlaying = 1;
 	public Warning (int time, int direction) {
 		ogTime = time;
 //		this.direction = direction; //0 = west, 1 = east, 2 = north, 3 = south
@@ -34,6 +36,14 @@ public class Warning extends GameObject {
 				break;
 			}
 				
+		}
+		
+		if (soundsPlaying < 3) {
+			GameCode.getSoundPlayer().playSoundEffect(3f, "resources/sounds/Warning Sound.wav");
+			soundsPlaying++;
+		}
+		else {
+			soundsPlaying--;
 		}
 	}
 	

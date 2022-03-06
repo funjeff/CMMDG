@@ -11,6 +11,7 @@ import hazards.Meteor;
 import hazards.Pointer;
 import hazards.Shark;
 import hazards.Tornado;
+import hazards.FloridaMan;
 
 public class GameController {
 	
@@ -94,48 +95,52 @@ public class GameController {
 			case 1:
 				Car c = new Car ();
 				c.spawnHazard();
-				newLine = hazardLines.get(0).get(r.nextInt(hazardLines.get(0).size()));
+				//newLine = hazardLines.get(0).get(r.nextInt(hazardLines.get(0).size()));
 				break;
 			case 2:
 				Flood f = new Flood();
 				f.declare();
-				newLine = hazardLines.get(1).get(r.nextInt(hazardLines.get(1).size()));
+				//newLine = hazardLines.get(1).get(r.nextInt(hazardLines.get(1).size()));
 				break;
 			case 3:
 				Meteor m = new Meteor ();
 				m.spawnHazard();
-				newLine = hazardLines.get(2).get(r.nextInt(hazardLines.get(2).size()));
+				//newLine = hazardLines.get(2).get(r.nextInt(hazardLines.get(2).size()));
 				break;
 			case 4:
 				Pointer p = new Pointer ();
 				p.declare();
-				newLine = hazardLines.get(3).get(r.nextInt(hazardLines.get(3).size()));
+				//newLine = hazardLines.get(3).get(r.nextInt(hazardLines.get(3).size()));
 				break;
 			case 5:
 				Shark s = new Shark (r.nextBoolean());
 				s.declare();
-				newLine = hazardLines.get(4).get(r.nextInt(hazardLines.get(4).size()));
+				//newLine = hazardLines.get(4).get(r.nextInt(hazardLines.get(4).size()));
 				break;
 			case 6:
 				Tornado t = new Tornado (r.nextBoolean());
 				t.declare();
-				newLine = hazardLines.get(5).get(r.nextInt(hazardLines.get(5).size()));
+				//newLine = hazardLines.get(5).get(r.nextInt(hazardLines.get(5).size()));
 				break;
 			case 7:
 				Drill d = new Drill();
 				d.spawnHazard();
-				newLine = hazardLines.get(6).get(r.nextInt(hazardLines.get(6).size()));
+				//newLine = hazardLines.get(6).get(r.nextInt(hazardLines.get(6).size()));
 				break;
 			case 8:
-				FlordaMan m = new FlordaMan ();
+				FloridaMan florida = new FloridaMan();
+				florida.declare();
+				//newLine = hazardLines.get(6).get(r.nextInt(hazardLines.get(7).size()));
+				break;
+				
 				
 		}
-		if (GameCode.getSoundPlayer().getClip(prevLine) == null) {
+		/*if (GameCode.getSoundPlayer().getClip(prevLine) == null) {
 			GameCode.getSoundPlayer().playSoundEffect(4F, newLine.linePath);
 			prevLine = newLine.linePath;
 			c.setChipSprite(newLine.emotion);
 			
-		}
+		}*/
 		
 	}
 	
