@@ -50,7 +50,7 @@ public class Tornado extends Hazard {
 			
 			if (sound)
 			{
-				GameCode.getSoundPlayer().playSoundEffect(6f, "resources/sounds/Tornado Sound Effect.wav");
+				GameCode.getSoundPlayer().playSoundEffect(1f, "resources/sounds/Tornado Sound Effect.wav");
 				sound = false;
 			}
 			super.draw();
