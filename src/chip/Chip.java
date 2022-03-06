@@ -18,13 +18,13 @@ public class Chip extends GameObject {
 		this.getAnimationHandler().setFrameTime(100);
 		this.setRenderPriority(1000);
 		
-		emotionToMaxImage.put("Angry", 5);
-		emotionToMaxImage.put("Composed", 6);
-		emotionToMaxImage.put("Confused", 6);
-		emotionToMaxImage.put("Excited", 5);
-		emotionToMaxImage.put("Happy", 4);
-		emotionToMaxImage.put("Relaxed", 4);
-		emotionToMaxImage.put("Serious", 4);
+		emotionToMaxImage.put("Angry", 12);
+		emotionToMaxImage.put("Composed", 9);
+		emotionToMaxImage.put("Confused", 11);
+		emotionToMaxImage.put("Excited", 8);
+		emotionToMaxImage.put("Happy", 7);
+		emotionToMaxImage.put("Relaxed", 6);
+		emotionToMaxImage.put("Serious", 6);
 		
 	}
 	
@@ -66,7 +66,7 @@ public class Chip extends GameObject {
 			}	
 		}
 		
-		this.setSprite(new Sprite("resources/chipSprites/" + toUse + (r.nextInt(emotionToMaxImage.get(toUse) + 1) + ".png" )));
+		chipSprite = new Sprite("resources/chipSprites/chip" + toUse + ((r.nextInt(emotionToMaxImage.get(toUse)) + 1) + ".png" ));
 	}
 	
 

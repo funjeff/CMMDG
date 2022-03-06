@@ -29,7 +29,6 @@ public class FloridaMan extends Hazard {
 	public void frameEvent()
 	{ 
 		super.frameEvent();
-		System.out.println(this.getAnimationHandler().getFrame());
 		if (warn.isDone())
 		{
 			this.getAnimationHandler().setFrameTime(300);

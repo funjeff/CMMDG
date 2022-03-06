@@ -40,7 +40,7 @@ public class Drill extends Hazard {
 	}
 	
 	public void spawnHazard() {
-		int amountOfDrils = r.nextInt(5) + 5;
+		int amountOfDrils = r.nextInt(5) + 2;
 		int xpos[] = new int[amountOfDrils];
 		for (int i = 0; i < amountOfDrils; i++)
 		{
