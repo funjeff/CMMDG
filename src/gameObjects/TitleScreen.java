@@ -13,6 +13,7 @@ public class TitleScreen extends GameObject {
 	String startLine = "";
 	
 	EnterToStart e = new EnterToStart();
+	EnterToStart tForTutorial = new EnterToStart();
 	
 	TitleChip t = new TitleChip ();
 	
@@ -39,7 +40,14 @@ public class TitleScreen extends GameObject {
 		}
 		e.visible = false;
 		e.setX(0);
-		e.setY(260);
+		e.setY(240);
+		
+		tForTutorial.setX(0);
+		tForTutorial.setY(290);
+
+		tForTutorial.setSprite(new Sprite ("resources/sprites/tfortutorial.png"));
+		
+		tForTutorial.visible = false;
 		
 		t.setX(420);
 		t.setY(220);
@@ -61,9 +69,14 @@ public class TitleScreen extends GameObject {
 				if (keyDown(KeyEvent.VK_ENTER)) {
 					GameCode.startGame();
 				}
+				if (keyDown('T')) {
+					GameCode.enterTutorial();
+				}
+				
 				
 				if (timer % 20 == 0) {
 					e.visible = !e.visible;
+					tForTutorial.visible = !tForTutorial.visible;
 				}
 			}
 			timer = timer + 1;
@@ -74,6 +87,7 @@ public class TitleScreen extends GameObject {
 		super.draw();
 		t.draw();
 		e.draw();
+		tForTutorial.draw();
 	}
 
 }
