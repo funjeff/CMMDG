@@ -20,6 +20,7 @@ import chip.GameController;
 import chip.ScrollingText;
 import gameObjects.Reporter;
 import hazards.Car;
+import hazards.Cats;
 import hazards.Flood;
 import hazards.Meteor;
 import hazards.Shark;
@@ -70,11 +71,7 @@ public class GameCode {
 		r.declare();
 		playableR = r;
 		c = new GameController();
-		
-		
-		
 		s = new SoundPlayer ();
-		
 		textTicker = new Sprite ("resources/sprites/scrollingtextbox.png");
 		ticker = new ScrollingText();
 		ticker.fillText();
@@ -87,7 +84,7 @@ public class GameCode {
 		frameCount = frameCount + 1;
 		ObjectHandler.callAll();
 		
-		if (frameCount > previousNewscast + 150) {
+		if (frameCount > previousNewscast + 60) {
 			c.attemptNewscast();
 			previousNewscast = frameCount;
 		}
