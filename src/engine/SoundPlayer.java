@@ -89,6 +89,14 @@ public class SoundPlayer implements LineListener{
 		}
 		return cliptwooowwowows.get(clipName);
 	}
+	public void stopAll () {
+		ArrayList <String> entrysToRemove = new ArrayList <String> ();
+		Iterator<Entry<String, Clip>>iter = cliptwooowwowows.entrySet().iterator();
+		while (iter.hasNext()) {
+			Entry<String, Clip> working = iter.next();
+			working.getValue().stop();
+		}
+	}
 	@Override
 	public void update(LineEvent event) {
 		if (event.getType() == LineEvent.Type.START){

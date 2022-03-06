@@ -108,6 +108,7 @@ public class GameCode {
 		
 	}
 	public static void initGameOver() {
+		s.stopAll();
 		if (s.getClip(c.getPrevLine()) != null) {
 			s.getClip(c.getPrevLine()).stop();
 		}
@@ -130,7 +131,7 @@ public class GameCode {
 		playableR = r;
 		c = new GameController();
 		s.play("resources/sounds/wintersSong.wav", 3F);
-	
+		t = null;
 		textTicker = new Sprite ("resources/sprites/scrollingtextbox.png");
 		ticker = new ScrollingText();
 		ticker.fillText();

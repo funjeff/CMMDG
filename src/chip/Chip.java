@@ -36,6 +36,8 @@ public class Chip extends GameObject {
 	
 	public void setChipSprite (String emotion) {
 		
+		if (emotion.equals("Happy") || emotion.equals("Angry") || emotion.equals("Composed") || emotion.equals("Confused") || emotion.equals("Excited") || emotion.equals("Relaxed") || emotion.equals("Serious") || emotion.equals("any")) {
+		
 		String toUse = emotion;
 		
 		Random r = new Random ();
@@ -67,6 +69,9 @@ public class Chip extends GameObject {
 		}
 		
 		chipSprite = new Sprite("resources/chipSprites/chip" + toUse + ((r.nextInt(emotionToMaxImage.get(toUse)) + 1) + ".png" ));
+		} else {
+			chipSprite = new Sprite("resources/chipSprites/" + emotion +".png" );
+		}
 	}
 	
 

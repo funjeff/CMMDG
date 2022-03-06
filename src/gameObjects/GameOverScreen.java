@@ -26,7 +26,7 @@ public class GameOverScreen extends GameObject {
 	public void init (String time, String bestTime) {
 		String voiceLine = "";
 		Random r = new Random ();
-		switch (r.nextInt(5)) {
+		switch (r.nextInt(9)) {
 		case 0:
 			voiceLine = "Game Over 1 Forever.wav";
 			break;
@@ -42,6 +42,18 @@ public class GameOverScreen extends GameObject {
 		case 4:
 			voiceLine = "Game Over 5 Sponsors.wav";
 			break;
+		case 5:
+			voiceLine = "Game Over 6.wav";
+			break;
+		case 6:
+			voiceLine = "Game Over 7.wav";
+			break;
+		case 7:
+			voiceLine = "Game Over 8.wav";
+			break;
+		case 8:
+			voiceLine = "Game Over 9.wav";
+			break;			
 		}
 		e.visible = false;
 		e.setX(0);
