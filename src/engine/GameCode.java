@@ -71,7 +71,7 @@ public class GameCode {
 		r.declare();
 		playableR = r;
 		c = new GameController();
-		s = new SoundPlayer();
+		s = new SoundPlayer ();
 		textTicker = new Sprite ("resources/sprites/scrollingtextbox.png");
 		ticker = new ScrollingText();
 		ticker.fillText();
@@ -80,6 +80,7 @@ public class GameCode {
 	
 	
 	public static void gameLoopFunc () {
+		
 		frameCount = frameCount + 1;
 		ObjectHandler.callAll();
 		
@@ -133,7 +134,7 @@ public class GameCode {
 
 
 
-	public SoundPlayer getSoundPlayer () {
+	public static SoundPlayer getSoundPlayer () {
 		return s;
 	}
 	
