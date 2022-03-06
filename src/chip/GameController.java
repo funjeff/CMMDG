@@ -89,7 +89,7 @@ public class GameController {
 		
 		
 		Random r = new Random ();
-		int news = r.nextInt(6) + 1;
+		int news = r.nextInt(8) + 1;
 		switch (news) {
 			case 1:
 				Car c = new Car ();
@@ -126,6 +126,9 @@ public class GameController {
 				d.spawnHazard();
 				newLine = hazardLines.get(6).get(r.nextInt(hazardLines.get(6).size()));
 				break;
+			case 8:
+				FlordaMan m = new FlordaMan ();
+				
 		}
 		if (GameCode.getSoundPlayer().getClip(prevLine) == null) {
 			GameCode.getSoundPlayer().playSoundEffect(4F, newLine.linePath);
