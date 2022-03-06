@@ -16,7 +16,7 @@ public class Reporter extends GameObject {
 	double ax = 0;
 
 	public static final double TERMINAL_VELOCITY = 15;
-	public static final double JUMP_VELOCITY = 12.15625;
+	public static final double JUMP_VELOCITY = 11;
 	
 	
 	boolean underwater = false;
@@ -70,9 +70,9 @@ public class Reporter extends GameObject {
 		}
 		
 			if (!underwater) {
-				vy += Room.getGravity ();
+				vy += Room.getGravity();
 			} else {
-				vy += Room.getGravity()-.3;
+				vy += Room.getGravity()-.1;
 			}
 	
 		if (vy > TERMINAL_VELOCITY) {

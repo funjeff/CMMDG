@@ -1,0 +1,2 @@
+$src resources/sprites/FallingCat.png
+grid 32 32
