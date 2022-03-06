@@ -17,6 +17,7 @@ import java.util.Scanner;
 
 import chip.Chip;
 import chip.GameController;
+import chip.ScrollingText;
 import gameObjects.Reporter;
 import hazards.Car;
 import hazards.Flood;
@@ -42,6 +43,12 @@ public class GameCode {
 	
 	static GameController c;
 
+	static SoundPlayer s;
+	
+	static Sprite textTicker;
+	static ScrollingText ticker;
+	
+	
 	public static void testBitch () {
 		
 		
@@ -62,9 +69,14 @@ public class GameCode {
 		r.setY(120);
 		r.declare();
 		playableR = r;
-	//	c = new GameController();
+		c = new GameController();
 		Car c = new Car();
 		c.spawnHazard();
+		s = new SoundPlayer ();
+		textTicker = new Sprite ("resources/sprites/scrollingtextbox.png");
+		ticker = new ScrollingText();
+		ticker.fillText();
+	
 	}
 		
 	
@@ -73,16 +85,20 @@ public class GameCode {
 		frameCount = frameCount + 1;
 		ObjectHandler.callAll();
 		
-//		if (frameCount > previousNewscast + 150) {
-//			c.attemptNewscast();
-//			previousNewscast = frameCount;
-//		}
+		if (frameCount > previousNewscast + 150) {
+			c.attemptNewscast();
+			previousNewscast = frameCount;
+		}
+		ticker.incrementText();
 		
 	}
 	
 	public static void renderFunc () {
 		Room.render();
 		ObjectHandler.renderAll();
+		textTicker.draw(0, 280);
+		ticker.drawText();
+		
 	}
 	
 	public static void beforeRender() {
@@ -119,6 +135,10 @@ public class GameCode {
 
 
 
+	public SoundPlayer getSoundPlayer () {
+		return s;
+	}
+	
 
 	public static long getFrameNum() {
 		// TODO Auto-generated method stub
