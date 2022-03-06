@@ -2,6 +2,7 @@ package hazards;
 
 import java.util.Random;
 
+import engine.GameCode;
 import engine.Sprite;
 import gameObjects.Warning;
 
@@ -18,6 +19,26 @@ public class FloridaMan extends Hazard {
 		this.warn.setX(0);
 		this.warn.setY(70);
 		this.warn.declare();
+		
+		int randChance = r.nextInt(1);
+		
+		if (randChance == 0) {
+			int gnomeSound = r.nextInt(4);
+			switch (gnomeSound) {
+			case 0: 
+				GameCode.getSoundPlayer().playSoundEffect(6f, "resources/sounds/Gnome 1.wav");
+				break;
+			case 1: 
+				GameCode.getSoundPlayer().playSoundEffect(6f, "resources/sounds/Gnome 2.wav");
+				break;
+			case 2: 
+				GameCode.getSoundPlayer().playSoundEffect(6f, "resources/sounds/Gnome 3.wav");
+				break;
+			case 3: 
+				GameCode.getSoundPlayer().playSoundEffect(6f, "resources/sounds/Gnome 4.wav");
+				break;
+			}
+		}
 	}
 	public void draw()
 	{
