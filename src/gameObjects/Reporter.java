@@ -111,7 +111,7 @@ public class Reporter extends GameObject {
 				        break;
 				    }
 				    if (getY () + this.getHitboxYOffset() >= collidingTiles [i].y && getY () + this.getHitboxYOffset() <= collidingTiles [i].y + 16) {
-				        this.setY (collidingTiles [i].y + 16);
+				        this.setY (collidingTiles [i].y + 32);
 				        break;
 				    }
 				}
@@ -142,6 +142,22 @@ public class Reporter extends GameObject {
 		return underwater;
 	}
 
+	@Override
+	public boolean isColliding (GameObject g) {
+		boolean returnValue;
+		
+		this.setY(this.getY() + 16);
+		returnValue = super.isColliding(g);
+		this.setY(this.getY() - 16);
+		
+		return returnValue;
+	}
+	@Override
+	public void draw () {
+		this.setY(this.getY() + 16);
+		super.draw();
+		this.setY(this.getY() - 16);
+	}
 
 	public void setUnderwater(boolean underwater) {
 		this.underwater = underwater;

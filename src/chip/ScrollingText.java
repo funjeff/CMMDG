@@ -69,6 +69,7 @@ public class ScrollingText {
 			}
 		}
 		
+		message = message + " THIS JUST IN IVE BEEN FIRED BYE";
 		t.changeText(message);
 	}
 	public void drawText() {

@@ -20,5 +20,7 @@ public class Chip extends GameObject {
 		chipSprite.draw((int)this.getX() + 32,(int)this.getY() + 33);
 	}
 	
+	public 
+	
 
 }
