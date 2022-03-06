@@ -5,6 +5,7 @@ import java.util.Random;
 import engine.GameCode;
 import engine.GameObject;
 import engine.Sprite;
+import engine.Textbox;
 
 import java.awt.event.KeyEvent;
 
@@ -16,10 +17,13 @@ public class GameOverScreen extends GameObject {
 	
 	int timer = 0;
 	
+	Textbox time;
+	Textbox bestTime;
+	
 	public GameOverScreen () {
 		this.setSprite(new Sprite ("resources/sprites/gameoverscreen.png"));
 	}
-	public void init () {
+	public void init (String time, String bestTime) {
 		String voiceLine = "";
 		Random r = new Random ();
 		switch (r.nextInt(5)) {
@@ -40,8 +44,21 @@ public class GameOverScreen extends GameObject {
 			break;
 		}
 		e.visible = false;
-		e.setX(30);
-		e.setY(220);
+		e.setX(0);
+		e.setY(250);
+		
+		this.time = new Textbox ("YOU SURVIVED " + time);
+		this.bestTime = new Textbox ("~Ctext (lime green)~BEST TIME " + bestTime);
+		
+		this.time.changeBoxVisability();
+		this.bestTime.changeBoxVisability();
+		
+		this.time.setX(120);
+		this.time.setY(170);
+		
+		this.bestTime.setX(140);
+		this.bestTime.setY(200);
+		
 		
 		deathLine = "resources/sounds/Game Over/" + voiceLine;
 		GameCode.getSoundPlayer().playSoundEffect(4F,deathLine);
@@ -63,6 +80,8 @@ public class GameOverScreen extends GameObject {
 	@Override
 	public void draw () {
 		super.draw();
+		time.draw();
+		bestTime.draw();
 		e.draw();
 	}
 

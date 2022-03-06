@@ -21,6 +21,7 @@ import chip.ScrollingText;
 import gameObjects.GameOverScreen;
 import gameObjects.Jumpscare;
 import gameObjects.Reporter;
+import gameObjects.Timer;
 import gameObjects.TitleScreen;
 import hazards.Car;
 import hazards.Cats;
@@ -51,11 +52,16 @@ public class GameCode {
 	static SoundPlayer s;
 	
 	static Sprite textTicker;
+	static Timer t;
 	static ScrollingText ticker;
 
-	static boolean mainScreen = false;
+	static boolean mainScreen = true;
 	static boolean gameOverScreen = false;
-	static boolean titleScreen = true;
+	static boolean titleScreen = false;
+	
+	static int bestTime = 0;
+	static String bestTimeString = "";
+	
 	
 	static boolean jumpscareMode = false;
 	
@@ -80,14 +86,23 @@ public class GameCode {
 	}
 
 	public static void initTitle() {
-		title = new TitleScreen();
+		//title = new TitleScreen();
 		s = new SoundPlayer();
-		title.init();
-		
+		//title.init();
+		initGame();
 	}
 	public static void initGameOver() {
+		if (s.getClip(c.getPrevLine()) != null) {
+			s.getClip(c.getPrevLine()).stop();
+		}
 		over = new GameOverScreen ();
-		over.init();
+		if (t.getElapsedSeconds() > bestTime) {
+			bestTime = t.getElapsedSeconds();
+			bestTimeString = t.getTimeString ();
+		}
+		
+		
+		over.init(t.getTimeString(),bestTimeString);
 	}
 	public static void initGame () {
 		Room.loadRoom("resources/maps/background.rmf");
@@ -98,6 +113,8 @@ public class GameCode {
 		playableR = r;
 		c = new GameController();
 	
+		t = new Timer ();
+		
 		textTicker = new Sprite ("resources/sprites/scrollingtextbox.png");
 		ticker = new ScrollingText();
 		ticker.fillText();
@@ -136,7 +153,7 @@ public class GameCode {
 			ObjectHandler.renderAll();
 			textTicker.draw(0, 280);
 			ticker.drawText();
-			
+			t.draw();
 		}
 		if (jumpscareMode) {
 			if (!jesus.isDone()) {

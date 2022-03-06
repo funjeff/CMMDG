@@ -180,6 +180,14 @@ public class GameController {
 		
 	}
 	
+	public String getPrevLine() {
+		return prevLine;
+	}
+
+	public void setPrevLine(String prevLine) {
+		this.prevLine = prevLine;
+	}
+
 	public void levelUp () {
 		if (AILevel > 0) {
 			AILevel = AILevel -1;
