@@ -68,6 +68,7 @@ public class SoundPlayer implements LineListener{
 		FloatControl gainControl2 = (FloatControl) clip2.getControl(FloatControl.Type.MASTER_GAIN);
 		gainControl2.setValue(volume);
 		clip2.start();
+
 		cliptwooowwowows.put(effectName, clip2);
 		} catch (Exception e){
 		e.printStackTrace();

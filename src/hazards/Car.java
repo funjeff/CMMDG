@@ -19,6 +19,7 @@ public class Car extends Hazard {
 	public Car (boolean flip, boolean sprite) {
 		this.setX(0);
 		this.setY(160);
+		this.setHitboxAttributes(0,0,32,32);
 		if (sprite) {
 			this.setSprite(new Sprite("resources/sprites/policeCar.txt"));
 			this.getAnimationHandler().setFrameTime(100);
@@ -35,7 +36,10 @@ public class Car extends Hazard {
 	
 	@Override
 	public void frameEvent () {
+		
+		
 		if (warn.isDone()) {
+			super.frameEvent();
 			if (delay == 0) {
 				if (!this.getAnimationHandler().flipHorizontal()) {
 					this.setX(this.getX() - 20);

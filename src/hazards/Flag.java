@@ -8,7 +8,7 @@ public class Flag extends Hazard
 	public Flag(double d, double e)
 	{
 		this.setSprite(new Sprite("resources/sprites/Flag.png"));
-		this.setHitbox(0,0,32,32);
+		this.setHitboxAttributes(0,0,32,32);
 		this.setX(d + 51);
 		this.setY(e + 11);
 		this.setDrawRotation(45);

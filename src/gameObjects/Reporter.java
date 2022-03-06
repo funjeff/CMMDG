@@ -1,5 +1,6 @@
 package gameObjects;
 
+import engine.GameCode;
 import engine.GameObject;
 import engine.Sprite;
 import map.MapTile;
@@ -136,7 +137,7 @@ public class Reporter extends GameObject {
 	}
 	
 	public void getKilled () {
-		
+		GameCode.enterGameOverScreen();
 	}
 	public boolean isUnderwater() {
 		return underwater;

@@ -12,17 +12,17 @@ public class Drill extends Hazard {
 		this.getAnimationHandler().setRepeat(false);
 		this.setY(190 + r.nextInt(10));
 		this.setX(r.nextInt(225));
-		this.setHitbox(0, 0, 32, 32);
+		this.setHitboxAttributes(0, 0, 32, 32);
 		this.enablePixelCollisions();
 		this.setRenderPriority(-1);
 	}
 	
 	@Override
 	public void frameEvent () {
-		super.frameEvent();
 		boolean spawnedGnome = true;
 		if (warn.isDone())
 		{
+			super.frameEvent();
 			this.getAnimationHandler().setFrameTime(50);
 			if (this.getAnimationHandler().getFrame() >= 32)
 			{
@@ -31,6 +31,8 @@ public class Drill extends Hazard {
 			if (this.getAnimationHandler().getFrame() >= 29 && spawnedGnome)
 			{
 				Gnome g = new Gnome();
+				Random r = new Random ();
+				g.setX(this.getX() + (r.nextInt(10) - 5) );
 				g.declare();
 				spawnedGnome = false;
 			}

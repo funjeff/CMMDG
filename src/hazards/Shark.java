@@ -26,7 +26,7 @@ public class Shark extends Hazard{
 	
 	public Shark (boolean flip) {
 		this.setSprite(new Sprite ("resources/sprites/shark.txt"));
-		this.setHitbox(0,0,32,32);
+		this.setHitboxAttributes(0,0,32,32);
 		this.getAnimationHandler().setFrameTime(100);
 //		originalX = 200; // change this later
 //		originalY = 200;
@@ -59,6 +59,7 @@ public class Shark extends Hazard{
 	{
 		if (warn.isDone())
 		{
+			super.frameEvent();
 			if (sound)
 			{
 				GameCode.getSoundPlayer().playSoundEffect(3f, "resources/sounds/Shark_exiting_water.wav");
