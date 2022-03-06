@@ -14,7 +14,6 @@ public class Drill extends Hazard {
 		this.setX(r.nextInt(225));
 		this.setHitbox(0, 0, 32, 32);
 		this.enablePixelCollisions();
-
 		this.setRenderPriority(-1);
 	}
 	
@@ -36,11 +35,12 @@ public class Drill extends Hazard {
 				spawnedGnome = false;
 			}
 		}
+		else this.getAnimationHandler().setAnimationFrame(0);
 		
 	}
 	
 	public void spawnHazard() {
-		int amountOfDrils = r.nextInt(5) + 5;
+		int amountOfDrils = r.nextInt(3) + 5;
 		int xpos[] = new int[amountOfDrils];
 		for (int i = 0; i < amountOfDrils; i++)
 		{
@@ -48,9 +48,10 @@ public class Drill extends Hazard {
 		}
 		for (int i = 0; i < amountOfDrils; i++) {
 			Drill d = new Drill();
-			d.declare();
 			d.warn = new Warning(100, 3);
 			d.warn.declare();
+			d.declare();
+			
 			int temp;
 			boolean Pos = false;
 			while(!Pos)
