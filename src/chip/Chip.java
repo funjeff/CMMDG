@@ -9,7 +9,7 @@ import engine.SpriteParser;
 
 public class Chip extends GameObject {
 	
-	Sprite chipSprite = new Sprite ("resources/chipSprites/chip.png");
+	Sprite chipSprite = new Sprite ("resources/chipSprites/chipComposed1.png");
 	
 	HashMap <String,Integer> emotionToMaxImage = new HashMap<String,Integer>(); 
 	

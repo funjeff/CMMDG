@@ -18,7 +18,10 @@ import java.util.Scanner;
 import chip.Chip;
 import chip.GameController;
 import chip.ScrollingText;
+import gameObjects.GameOverScreen;
+import gameObjects.Jumpscare;
 import gameObjects.Reporter;
+import gameObjects.TitleScreen;
 import hazards.Car;
 import hazards.Cats;
 import hazards.Flood;
@@ -49,6 +52,18 @@ public class GameCode {
 	
 	static Sprite textTicker;
 	static ScrollingText ticker;
+
+	static boolean mainScreen = false;
+	static boolean gameOverScreen = false;
+	static boolean titleScreen = true;
+	
+	static boolean jumpscareMode = false;
+	
+	static GameOverScreen over;
+	static TitleScreen title;
+	
+	static Jumpscare jesus = new Jumpscare ();
+	
 	
 	
 	public static void testBitch () {
@@ -63,10 +78,18 @@ public class GameCode {
 	public static void afterGameLogic () {
 		
 	}
-	public static void displayTitleScreen() {
+
+	public static void initTitle() {
+		title = new TitleScreen();
+		s = new SoundPlayer();
+		title.init();
 		
 	}
-	public static void init () {
+	public static void initGameOver() {
+		over = new GameOverScreen ();
+		over.init();
+	}
+	public static void initGame () {
 		Room.loadRoom("resources/maps/background.rmf");
 		Reporter r = new Reporter();
 		r.setX(130);
@@ -74,9 +97,7 @@ public class GameCode {
 		r.declare();
 		playableR = r;
 		c = new GameController();
-		s = new SoundPlayer();
-		Drill d = new Drill();
-		d.spawnHazard();
+	
 		textTicker = new Sprite ("resources/sprites/scrollingtextbox.png");
 		ticker = new ScrollingText();
 		ticker.fillText();
@@ -86,23 +107,51 @@ public class GameCode {
 	
 	public static void gameLoopFunc () {
 		
-		frameCount = frameCount + 1;
-		ObjectHandler.callAll();
+		if (mainScreen && !jumpscareMode) {
 		
-		if (frameCount > previousNewscast + 60) {
-			c.attemptNewscast();
-			previousNewscast = frameCount;
+			frameCount = frameCount + 1;
+			ObjectHandler.callAll();
+			
+			if (frameCount > previousNewscast + 60) {
+				c.attemptNewscast();
+				previousNewscast = frameCount;
+			}
+			ticker.incrementText();
+			attemptJumpscare();
 		}
-		ticker.incrementText();
+		
+		
+		if (titleScreen) {
+			title.frameEvent();
+		}
+		if (gameOverScreen) {
+			over.frameEvent();
+		}
 		
 	}
 	
 	public static void renderFunc () {
-		Room.render();
-		ObjectHandler.renderAll();
-		textTicker.draw(0, 280);
-		ticker.drawText();
+		if (mainScreen) {
+			Room.render();
+			ObjectHandler.renderAll();
+			textTicker.draw(0, 280);
+			ticker.drawText();
+			
+		}
+		if (jumpscareMode) {
+			if (!jesus.isDone()) {
+				jesus.draw();
+			} else {
+				jumpscareMode = false;
+			}
+		}
 		
+		if (titleScreen) {
+			title.draw();
+		}
+		if (gameOverScreen) {
+			over.draw();
+		}
 	}
 	
 	public static void beforeRender() {
@@ -141,6 +190,39 @@ public class GameCode {
 
 	public static SoundPlayer getSoundPlayer () {
 		return s;
+	}
+	
+	public static void attemptJumpscare () {
+		Random r = new Random ();
+		if (r.nextInt(10000) == 69) {
+			doJumpscare();
+		}
+	}
+	
+	public static void doJumpscare() {
+		jumpscareMode = true;
+		jesus.init();
+	}
+	
+	public static void startGame() {
+		initGame();
+		mainScreen = true;
+		titleScreen = false;
+		gameOverScreen = false;
+	}
+	
+	public static void enterTitleScreen () {
+		initTitle();
+		mainScreen = false;
+		titleScreen = true;
+		gameOverScreen = false;
+	}
+	
+	public static void enterGameOverScreen () {
+		initGameOver();
+		mainScreen = false;
+		titleScreen = false;
+		gameOverScreen = true;
 	}
 	
 

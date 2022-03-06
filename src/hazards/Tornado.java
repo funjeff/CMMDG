@@ -18,7 +18,7 @@ public class Tornado extends Hazard {
 	public Tornado (boolean flip) {
 		this.setSprite(new Sprite ("resources/sprites/Tornado.txt"));
 		this.getAnimationHandler().setFrameTime(100);
-		this.setHitbox(0,101, 128,155);
+		this.setHitboxAttributes(0,101, 128,155);
 		this.setY(-100);
 		this.enablePixelCollisions();
 		
@@ -41,6 +41,7 @@ public class Tornado extends Hazard {
 	{
 		if (warn.isDone())
 		{
+			
 			if (sound)
 			{
 				GameCode.getSoundPlayer().playSoundEffect(6f, "resources/sounds/Tornado Sound Effect.wav");
@@ -52,8 +53,10 @@ public class Tornado extends Hazard {
 
 	@Override
 	public void frameEvent () {
+		
 		if (warn.isDone())
 		{
+			super.frameEvent();
 			if (flip)
 			{
 				this.setX(this.getX() + 1);

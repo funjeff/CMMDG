@@ -18,16 +18,16 @@ public class Meteor extends Hazard{
 		GameCode.getSoundPlayer().playSoundEffect(1f, "resources/sounds/Short_Meteorite_Shower.wav");
 		Random r = new Random();
 		this.setSprite(new Sprite ("resources/sprites/meteorite" + (r.nextInt(3) + 1) + ".png"));
-		this.setHitbox(0,0,32,32);
+		this.setHitboxAttributes(0,0,32,32);
 	}
 	
 	@Override
 	public void frameEvent () {
-		super.frameEvent();
+		
 		if (warn.isDone())
 		{
 			if (delay == 0) {
-				
+				super.frameEvent();
 				if (ay < 2) {
 					ay = ay + 0.1;
 				}

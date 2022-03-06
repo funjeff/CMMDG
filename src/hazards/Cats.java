@@ -30,7 +30,7 @@ double ay = 0.0;
 			this.setSprite(new Sprite ("resources/sprites/FallingCatStriped.txt"));
 			this.getAnimationHandler().setFlipHorizontal(true);
 		}
-		this.setHitbox(0, 0, 32, 32);
+		this.setHitboxAttributes(0, 0, 32, 32);
 	}
 	public void draw()
 	{

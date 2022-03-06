@@ -11,7 +11,7 @@ public class Pointer extends Hazard {
 	
 	public Pointer () {
 		this.setSprite(new Sprite ("resources/sprites/cursor.png"));
-		this.setHitbox(0,0,64,64);
+		this.setHitboxAttributes(0,0,64,64);
 		Random r = new Random ();
 		timer = r.nextInt(100) + 150;
 		this.enablePixelCollisions();
@@ -19,6 +19,7 @@ public class Pointer extends Hazard {
 	
 	@Override
 	public void frameEvent () {
+		super.frameEvent();
 		if (GameCode.getReporter().getX() > this.getX()) {
 			this.setX(this.getX() + 1);
 		} else {
