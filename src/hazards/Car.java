@@ -10,7 +10,6 @@ public class Car extends Hazard {
 	
 	int delay = 0;
 	
-	Warning warn;
 	
 	public Car () {
 		this.setX(0);
@@ -63,15 +62,17 @@ public class Car extends Hazard {
 	@Override
 	public void spawnHazard()
 	{
-		
-
 		Random r = new Random ();
-		
 		boolean direction = r.nextBoolean();
 		Car regularCar = new Car (direction,false);
 		regularCar.declare();
 		
-		regularCar.warn = new Warning (100);
+		if (direction == false)
+		{
+			regularCar.warn = new Warning (100, 0);
+		}
+		else regularCar.warn = new Warning (100, 1);
+		
 		if (direction) {
 			regularCar.warn.declare(regularCar.getX() - 16,regularCar.getY());
 		} else {
@@ -85,7 +86,7 @@ public class Car extends Hazard {
 			c.declare();
 			c.setY(160 + (r.nextInt(30) - 15));
 			c.delay = r.nextInt(100) + 100;
-			c.warn = new Warning (0);
+			c.warn = new Warning (0, 0);
 		
 		}
 	}

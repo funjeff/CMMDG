@@ -2,9 +2,10 @@ package hazards;
 
 import engine.GameCode;
 import engine.GameObject;
+import gameObjects.Warning;
 
 public class Hazard extends GameObject {
-
+	Warning warn;
 	public Hazard() {
 		
 	}

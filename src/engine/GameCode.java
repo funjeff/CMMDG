@@ -63,8 +63,8 @@ public class GameCode {
 		r.declare();
 		playableR = r;
 	//	c = new GameController();
-		Car c = new Car();
-		c.spawnHazard();
+		Meteor m = new Meteor();
+		m.spawnHazard();
 	}
 		
 	
