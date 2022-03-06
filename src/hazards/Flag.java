@@ -12,6 +12,7 @@ public class Flag extends Hazard
 		this.setX(d + 51);
 		this.setY(e + 11);
 		this.setDrawRotation(45);
+		this.enablePixelCollisions();
 	}
 	public void draw()
 	{

@@ -8,7 +8,9 @@ public class Warning extends GameObject {
 	int direction;
 	int despawnTimer = 0;
 	int ogTime = 0;
-	static int soundsPlaying = 1;
+	static int soundsPlaying = 0;
+	static long frameCount = GameCode.getFrameNum(); 
+	
 	public Warning (int time, int direction) {
 		ogTime = time;
 //		this.direction = direction; //0 = west, 1 = east, 2 = north, 3 = south
@@ -38,11 +40,12 @@ public class Warning extends GameObject {
 				
 		}
 		
+		long frameDifference = GameCode.getFrameNum() - frameCount; 
 		if (soundsPlaying < 3) {
 			GameCode.getSoundPlayer().playSoundEffect(3f, "resources/sounds/Warning Sound.wav");
 			soundsPlaying++;
 		}
-		else {
+		else if (frameDifference > 60) {
 			soundsPlaying--;
 		}
 	}

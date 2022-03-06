@@ -2,9 +2,10 @@ package hazards;
 
 import engine.GameCode;
 import engine.Sprite;
+import gameObjects.Warning;
 
 public class Tornado extends Hazard {
-
+	boolean sound = true;
 	boolean flip = false;
 	
 	public Tornado () {
@@ -23,24 +24,51 @@ public class Tornado extends Hazard {
 		
 		if (flip) {
 			this.setX(0);
+			this.warn = new Warning(100, 0);
+			this.warn.declare();
+			this.warn.setX(0);
+			this.warn.setY(100);
 			this.flip = true;
 		} else {
 			this.setX(245);
+			this.warn = new Warning(100, 1);
+			this.warn.declare();
+			this.warn.setX(0);
+			this.warn.setY(100);
 		}
-		GameCode.getSoundPlayer().playSoundEffect(6f, "resources/sounds/Tornado Sound Effect.wav");
+	}
+	public void draw()
+	{
+		if (warn.isDone())
+		{
+			if (sound)
+			{
+				GameCode.getSoundPlayer().playSoundEffect(6f, "resources/sounds/Tornado Sound Effect.wav");
+				sound = false;
+			}
+			super.draw();
+		}
 	}
 
 	@Override
 	public void frameEvent () {
-		if (flip) {
-			this.setX(this.getX() + 1);
-			if (this.getX() > 190) {	
-				this.forget();
+		if (warn.isDone())
+		{
+			if (flip)
+			{
+				this.setX(this.getX() + 1);
+				if (this.getX() > 190)
+				{	
+					this.forget();
+				}
 			}
-		} else {
-			this.setX(this.getX() - 1);
-			if (this.getX() < 0) {
-				this.forget();
+			else
+			{
+				this.setX(this.getX() - 1);
+				if (this.getX() < 0)
+				{
+					this.forget();
+				}
 			}
 		}
 	}

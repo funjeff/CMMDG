@@ -40,7 +40,7 @@ public class GameController {
 		hazardLines.add(new ArrayList <ChipLine>());
 		
 		hazardLines.get(0).add(new ChipLine("resources/sounds/Car Chase/Car Chase 2 Charles Scene.wav","Composed"));
-		hazardLines.get(0).add(new ChipLine("Car Chase 3 Man Behind Slaughter.wav","Confused"));
+		hazardLines.get(0).add(new ChipLine("resources/sounds/Car Chase/Car Chase 3 Man Behind Slaughter.wav","Confused"));
 		
 		
 		//put flood lines here
@@ -136,6 +136,7 @@ public class GameController {
 			case 3:
 				Meteor m = new Meteor ();
 				m.spawnHazard();
+				
 				newLine = hazardLines.get(2).get(r.nextInt(hazardLines.get(2).size()));
 				break;
 //			case 4:

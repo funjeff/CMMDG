@@ -75,6 +75,8 @@ public class GameCode {
 		playableR = r;
 		c = new GameController();
 		s = new SoundPlayer();
+		Drill d = new Drill();
+		d.spawnHazard();
 		textTicker = new Sprite ("resources/sprites/scrollingtextbox.png");
 		ticker = new ScrollingText();
 		ticker.fillText();

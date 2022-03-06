@@ -36,7 +36,7 @@ public class ScrollingText {
 	}
 	
 	public void incrementText () {
-		t.setX(t.getX() - 1);
+		t.setX(t.getX() - 2);
 	}
 	public void fillText () {
 		String message = "";
