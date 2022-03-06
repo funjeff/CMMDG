@@ -92,9 +92,13 @@ public class GameOverScreen extends GameObject {
 	@Override
 	public void draw () {
 		super.draw();
-		time.draw();
-		bestTime.draw();
-		e.draw();
+		try {
+			time.draw();
+			bestTime.draw();
+			e.draw();
+		} catch (NullPointerException e) {
+			
+		}
 	}
 
 }
