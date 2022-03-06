@@ -20,8 +20,8 @@ public class Shark extends Hazard{
 	public Shark () {
 		this.setSprite(new Sprite ("resources/sprites/shark.txt"));
 		this.setHitbox(0,0,32,32);
-		GameCode gc = new GameCode();
-		gc.getSoundPlayer().playSoundEffect(6f, "resources/sounds/Shark_exiting_water.wav");
+		GameCode.getSoundPlayer().playSoundEffect(6f, "resources/sounds/Shark_exiting_water.wav");
+		
 	}
 	
 	public Shark (boolean flip) {
