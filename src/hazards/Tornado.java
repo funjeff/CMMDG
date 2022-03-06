@@ -18,9 +18,15 @@ public class Tornado extends Hazard {
 	public Tornado (boolean flip) {
 		this.setSprite(new Sprite ("resources/sprites/Tornado.txt"));
 		this.getAnimationHandler().setFrameTime(100);
-		this.setHitboxAttributes(0,101, 128,155);
+		
+		double [] xOffsets = {0,16,32,48};
+		double [] yOffsets = {101,139,177,215};
+		double [] widths = {128,96,64,32};
+		double [] heights = {38,38,38,38};
+		
+		this.setHitboxAttributes(xOffsets, yOffsets, widths,heights);
 		this.setY(-100);
-		this.enablePixelCollisions();
+		//this.adjustHitboxBorders();
 		
 		if (flip) {
 			this.setX(0);
@@ -33,7 +39,7 @@ public class Tornado extends Hazard {
 			this.setX(245);
 			this.warn = new Warning(100, 1);
 			this.warn.declare();
-			this.warn.setX(0);
+			this.warn.setX(245);
 			this.warn.setY(100);
 		}
 	}

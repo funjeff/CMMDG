@@ -23,6 +23,7 @@ import gameObjects.Jumpscare;
 import gameObjects.Reporter;
 import gameObjects.Timer;
 import gameObjects.TitleScreen;
+import gameObjects.Tutorial;
 import hazards.Car;
 import hazards.Cats;
 import hazards.Flood;
@@ -58,6 +59,8 @@ public class GameCode {
 	static boolean mainScreen = true;
 	static boolean gameOverScreen = false;
 	static boolean titleScreen = false;
+	static boolean tutorialScreen = false;
+	
 	
 	static int bestTime = 0;
 	static String bestTimeString = "";
@@ -67,6 +70,7 @@ public class GameCode {
 	
 	static GameOverScreen over;
 	static TitleScreen title;
+	static Tutorial tutorial;
 	
 	static Jumpscare jesus = new Jumpscare ();
 	
@@ -82,6 +86,10 @@ public class GameCode {
 	}
 
 	public static void afterGameLogic () {
+		
+	}
+	
+	public static void initTutorial() {
 		
 	}
 
@@ -101,6 +109,7 @@ public class GameCode {
 			bestTimeString = t.getTimeString ();
 		}
 		
+		s.stop();
 		
 		over.init(t.getTimeString(),bestTimeString);
 	}
@@ -113,7 +122,12 @@ public class GameCode {
 		playableR = r;
 		c = new GameController();
 	
+		s.play("resources/sounds/wintersSong.wav", 3F);
+		
 		t = new Timer ();
+		
+		Tornado tor = new Tornado (true);
+		tor.declare();
 		
 		textTicker = new Sprite ("resources/sprites/scrollingtextbox.png");
 		ticker = new ScrollingText();
@@ -137,6 +151,7 @@ public class GameCode {
 			attemptJumpscare();
 		}
 		
+		if
 		
 		if (titleScreen) {
 			title.frameEvent();

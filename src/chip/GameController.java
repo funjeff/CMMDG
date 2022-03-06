@@ -16,7 +16,7 @@ import hazards.FloridaMan;
 
 public class GameController {
 	
-	int AILevel = 12;
+	int AILevel = 10;
 	int newsCasts = 0;
 	
 	
@@ -121,7 +121,7 @@ public class GameController {
 		
 		
 		Random r = new Random ();
-		int news = r.nextInt(8) + 1;
+		int news = r.nextInt(9) + 1;
 		switch (news) {
 			case 1:
 				Car c = new Car ();
