@@ -22,6 +22,7 @@ import gameObjects.Reporter;
 import hazards.Car;
 import hazards.Cats;
 import hazards.Flood;
+import hazards.FloridaMan;
 import hazards.Meteor;
 import hazards.Shark;
 import hazards.Tornado;
@@ -72,6 +73,8 @@ public class GameCode {
 		playableR = r;
 		c = new GameController();
 		s = new SoundPlayer ();
+		FloridaMan f = new FloridaMan();
+		f.declare();
 		textTicker = new Sprite ("resources/sprites/scrollingtextbox.png");
 		ticker = new ScrollingText();
 		ticker.fillText();

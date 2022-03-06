@@ -2,6 +2,7 @@ package hazards;
 
 import java.util.Random;
 
+import engine.GameCode;
 import engine.Sprite;
 import gameObjects.Warning;
 import map.Room;
@@ -28,9 +29,8 @@ double ay = 0.0;
 		case 3:
 			this.setSprite(new Sprite ("resources/sprites/FallingCatStriped.txt"));
 			this.getAnimationHandler().setFlipHorizontal(true);
-			break;
 		}
-		GameCode.getSound()
+		this.setHitbox(0, 0, 32, 32);
 	}
 	public void draw()
 	{
@@ -46,6 +46,7 @@ double ay = 0.0;
 			if (Room.isColliding(this))
 			{
 				forget();
+				GameCode.getSoundPlayer().playSoundEffect(3f, "resources/sounds/cat_growl1.wav");
 			}
 			if (ay < 2) {
 				ay = ay + 0.1;

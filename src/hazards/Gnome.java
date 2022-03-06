@@ -23,6 +23,7 @@ public class Gnome extends Hazard{
 		this.setY(190 + r.nextInt(10));
 		this.setX(r.nextInt(245));
 		jumpHeight = 190 - (30 + r.nextInt(50));
+		this.setHitbox(0, 0, 32, 32);
 	}
 	public void frameEvent()
 	{
