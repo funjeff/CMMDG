@@ -33,7 +33,7 @@ public class Tornado extends Hazard {
 			this.setX(245);
 			this.warn = new Warning(100, 1);
 			this.warn.declare();
-			this.warn.setX(0);
+			this.warn.setX(245);
 			this.warn.setY(100);
 		}
 	}
