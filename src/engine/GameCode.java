@@ -57,9 +57,9 @@ public class GameCode {
 	static Timer t;
 	static ScrollingText ticker;
 
-	static boolean mainScreen = true;
+	static boolean mainScreen = false;
 	static boolean gameOverScreen = false;
-	static boolean titleScreen = false;
+	static boolean titleScreen = true;
 	static boolean tutorialScreen = false;
 	
 	static boolean chipCountDown;
@@ -101,11 +101,11 @@ public class GameCode {
 	}
 
 	public static void initTitle() {
-		//title = new TitleScreen();
+		title = new TitleScreen();
 		s = new SoundPlayer();
-		//title.init();
-		initGame();
-		//initTutorial();
+		title.init();
+		
+		
 	}
 	public static void initGameOver() {
 		if (s.getClip(c.getPrevLine()) != null) {
@@ -130,13 +130,11 @@ public class GameCode {
 		playableR = r;
 		c = new GameController();
 		s.play("resources/sounds/wintersSong.wav", 3F);
-		t = new Timer ();
-		Drill tor = new Drill ();
-		tor.spawnHazard();
+	
 		textTicker = new Sprite ("resources/sprites/scrollingtextbox.png");
 		ticker = new ScrollingText();
 		ticker.fillText();
-		//chipCountDown = true;
+		chipCountDown = true;
 		cCountDown = new ChipCountdown();
 		cCountDown.init();
 	}
@@ -162,6 +160,7 @@ public class GameCode {
 			cCountDown.frameEvent();
 			if (cCountDown.isDone()) {
 				chipCountDown = false;
+				t = new Timer ();
 			}
 		}
 		
@@ -184,7 +183,9 @@ public class GameCode {
 			ObjectHandler.renderAll();
 			textTicker.draw(0, 280);
 			ticker.drawText();
-			t.draw();
+			if (t != null) {
+				t.draw();
+			}
 		}
 		if (jumpscareMode) {
 			if (!jesus.isDone()) {
@@ -198,7 +199,9 @@ public class GameCode {
 		}
 		
 		if (chipCountDown) {
-			
+			if (cCountDown != null) {
+				cCountDown.draw();
+			}
 		}
 		
 		if (titleScreen) {
