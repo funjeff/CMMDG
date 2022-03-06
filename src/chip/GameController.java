@@ -127,7 +127,7 @@ public class GameController {
 				newLine = hazardLines.get(6).get(r.nextInt(hazardLines.get(6).size()));
 				break;
 			case 8:
-				FlordaMan m = new FlordaMan ();
+				//FlordaMan m = new FlordaMan ();
 				
 		}
 		if (GameCode.getSoundPlayer().getClip(prevLine) == null) {
