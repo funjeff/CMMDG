@@ -6,10 +6,13 @@ import engine.GameCode;
 import engine.GameObject;
 import engine.Sprite;
 
-public class Tutorial extends GameObject{
+public class ChipCountdown extends GameObject{
 
 	ArrayList <String> voiceLines = new ArrayList<String>();
 	ArrayList <String> chipImages = new ArrayList <String>();
+	
+	
+	boolean isDone = false;
 	
 	TutorialChip t = new TutorialChip();
 	
@@ -17,7 +20,7 @@ public class Tutorial extends GameObject{
 	int curLine = 0;
 	int timer = 0;
 	
-	public Tutorial() {
+	public ChipCountdown() {
 		this.setSprite(new Sprite ("resources/sprites/tutorialscreen.png"));
 	}
 	
@@ -25,16 +28,13 @@ public class Tutorial extends GameObject{
 		//TODO add voiceLines into voiceLine arrayList 
 		//TODO add chip images into chip images arrayList
 		
-		chipImages.add("resources/chipSprites/tutorialChip3.png");
-		chipImages.add("resources/chipSprites/tutorialChip6.png");
-		chipImages.add("resources/chipSprites/tutorialChip2.png");
-		chipImages.add("resources/chipSprites/tutorialChip4.png");
-		chipImages.add("resources/chipSprites/tutorialChip5.png");
-		chipImages.add("resources/chipSprites/tutorialChip4.png");
-		chipImages.add("resources/chipSprites/tutorialChip1.png");
+		chipImages.add("resources/chipSprites/5.png");
+		chipImages.add("resources/chipSprites/4.png");
+		chipImages.add("resources/chipSprites/3.png");
+		chipImages.add("resources/chipSprites/2.png");
+		chipImages.add("resources/chipSprites/1.png");
 		
-		chipImages.add("resources/chipSprites/tutorialChip7.png");
-		
+		t.setSprite(new Sprite (chipImages.get(0)));
 		
 		//TODO play first voiceLine
 		t.setX(45);
@@ -49,7 +49,7 @@ public class Tutorial extends GameObject{
 //				timer = 0;
 //				this.setSprite(new Sprite (chipImages.get(curLine)));				
 //			} else {
-//				GameCode.enterTitleScreen();
+//				isDone = true;
 //			}
 //		}
 	}
@@ -58,6 +58,10 @@ public class Tutorial extends GameObject{
 	public void draw () {
 		super.draw();
 		t.draw();
+	}
+	
+	public boolean isDone () {
+		return isDone;
 	}
 	
 }

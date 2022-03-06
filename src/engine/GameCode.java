@@ -18,6 +18,7 @@ import java.util.Scanner;
 import chip.Chip;
 import chip.GameController;
 import chip.ScrollingText;
+import gameObjects.ChipCountdown;
 import gameObjects.GameOverScreen;
 import gameObjects.Jumpscare;
 import gameObjects.Reporter;
@@ -61,6 +62,8 @@ public class GameCode {
 	static boolean titleScreen = false;
 	static boolean tutorialScreen = false;
 	
+	static boolean chipCountDown;
+	
 	
 	static int bestTime = 0;
 	static String bestTimeString = "";
@@ -71,6 +74,8 @@ public class GameCode {
 	static GameOverScreen over;
 	static TitleScreen title;
 	static Tutorial tutorial;
+	
+	static ChipCountdown cCountDown;
 	
 	static Jumpscare jesus = new Jumpscare ();
 	
@@ -90,6 +95,8 @@ public class GameCode {
 	}
 	
 	public static void initTutorial() {
+		tutorial = new Tutorial();
+		tutorial.init();
 		
 	}
 
@@ -98,6 +105,7 @@ public class GameCode {
 		s = new SoundPlayer();
 		//title.init();
 		initGame();
+		//initTutorial();
 	}
 	public static void initGameOver() {
 		if (s.getClip(c.getPrevLine()) != null) {
@@ -126,19 +134,22 @@ public class GameCode {
 		
 		t = new Timer ();
 		
-		Tornado tor = new Tornado (true);
-		tor.declare();
+		Drill tor = new Drill ();
+		tor.spawnHazard();
 		
 		textTicker = new Sprite ("resources/sprites/scrollingtextbox.png");
 		ticker = new ScrollingText();
 		ticker.fillText();
+		//chipCountDown = true;
+		cCountDown = new ChipCountdown();
+		cCountDown.init();
 	}
 		
 	
 	
 	public static void gameLoopFunc () {
 		
-		if (mainScreen && !jumpscareMode) {
+		if (mainScreen && !jumpscareMode && !chipCountDown) {
 		
 			frameCount = frameCount + 1;
 			ObjectHandler.callAll();
@@ -151,7 +162,16 @@ public class GameCode {
 			attemptJumpscare();
 		}
 		
-		if
+		if (chipCountDown) {
+			cCountDown.frameEvent();
+			if (cCountDown.isDone()) {
+				chipCountDown = false;
+			}
+		}
+		
+		if (tutorialScreen) {
+			tutorial.frameEvent();
+		}
 		
 		if (titleScreen) {
 			title.frameEvent();
@@ -176,6 +196,13 @@ public class GameCode {
 			} else {
 				jumpscareMode = false;
 			}
+		}
+		if (tutorialScreen) {
+			tutorial.draw();
+		}
+		
+		if (chipCountDown) {
+			
 		}
 		
 		if (titleScreen) {
@@ -241,6 +268,7 @@ public class GameCode {
 		mainScreen = true;
 		titleScreen = false;
 		gameOverScreen = false;
+		tutorialScreen = false;
 	}
 	
 	public static void enterTitleScreen () {
@@ -248,6 +276,7 @@ public class GameCode {
 		mainScreen = false;
 		titleScreen = true;
 		gameOverScreen = false;
+		tutorialScreen = false;
 	}
 	
 	public static void enterGameOverScreen () {
@@ -255,6 +284,14 @@ public class GameCode {
 		mainScreen = false;
 		titleScreen = false;
 		gameOverScreen = true;
+		tutorialScreen = false;
+	}
+	public static void enterTutorial() {
+		initTutorial();
+		mainScreen = false;
+		gameOverScreen = false;
+		titleScreen = false;
+		tutorialScreen = true;
 	}
 	
 

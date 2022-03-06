@@ -31,6 +31,8 @@ public class Drill extends Hazard {
 			if (this.getAnimationHandler().getFrame() >= 29 && spawnedGnome)
 			{
 				Gnome g = new Gnome();
+				Random r = new Random ();
+				g.setX(this.getX() + (r.nextInt(10) - 5) );
 				g.declare();
 				spawnedGnome = false;
 			}
