@@ -95,6 +95,8 @@ public class GameCode {
 	}
 	
 	public static void initTutorial() {
+		s.stop();
+		s.play("resources/sounds/Mocking Song.wav", 3F);
 		tutorial = new Tutorial();
 		tutorial.init();
 		
@@ -104,7 +106,7 @@ public class GameCode {
 		title = new TitleScreen();
 		s = new SoundPlayer();
 		title.init();
-		
+		s.play("resources/sounds/Reporter_Banger_The_Sequel_The_Prequel.wav", 3F);
 		
 	}
 	public static void initGameOver() {
@@ -119,10 +121,11 @@ public class GameCode {
 		}
 		
 		s.stop();
-		
+		s.play("resources/sounds/Mocking Song.wav", 3F);
 		over.init(t.getTimeString(),bestTimeString);
 	}
 	public static void initGame () {
+		s.stop();
 		Room.loadRoom("resources/maps/background.rmf");
 		Reporter r = new Reporter();
 		r.setX(130);

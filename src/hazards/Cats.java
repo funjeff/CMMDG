@@ -34,9 +34,13 @@ double ay = 0.0;
 	}
 	public void draw()
 	{
-		if (warn.isDone())
-		{
-			super.draw();
+		try {
+			if (warn.isDone())
+			{
+				super.draw();
+			}
+		} catch (NullPointerException e) {
+			
 		}
 	}
 	public void frameEvent()
@@ -61,9 +65,9 @@ double ay = 0.0;
 		int amountOfCats = r.nextInt(5) + 5;
 		for (int i = 0; i < amountOfCats; i++) {
 			Cats c = new Cats ();
-			c.declare();
 			c.warn = new Warning(100, 3);
 			c.warn.declare();
+			c.declare();
 			int xPos = r.nextInt(245);
 			c.warn.setX(xPos);
 			c.warn.setY(0);

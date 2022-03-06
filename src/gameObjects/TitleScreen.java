@@ -27,7 +27,7 @@ public class TitleScreen extends GameObject {
 	public void init () {
 		String voiceLine = "";
 		Random r = new Random ();
-		switch (r.nextInt(3)) {
+		switch (r.nextInt(7)) {
 		case 0:
 			voiceLine = "Title Screen 1.wav";
 			break;
@@ -37,6 +37,19 @@ public class TitleScreen extends GameObject {
 		case 2:
 			voiceLine = "Title Screen 3 News of the Day.wav";
 			break;
+		case 3:
+			voiceLine = "Title Screen 3.wav";
+			break;
+		case 4:
+			voiceLine = "Title Screen 4.wav";
+			break;
+		case 5:
+			voiceLine = "Title Screen 5.wav";
+			break;
+		case 6:
+			voiceLine = "Title Screen 6.wav";
+			break;
+				
 		}
 		e.visible = false;
 		e.setX(0);

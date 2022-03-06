@@ -68,11 +68,13 @@ public class GameController {
 		//put pointer lines here
 		hazardLines.add(new ArrayList <ChipLine>());
 		
-		hazardLines.get(2).add(new ChipLine("resources/sounds/Mouse/Mouse 1.wav","Confused"));
-		hazardLines.get(2).add(new ChipLine("resources/sounds/Mouse/Mouse 2.wav","Confused"));
-		hazardLines.get(2).add(new ChipLine("resources/sounds/Mouse/Mouse 3.wav","Serious"));
-		hazardLines.get(2).add(new ChipLine("resources/sounds/Mouse/Mouse 4.wav","Serious"));
-		hazardLines.get(2).add(new ChipLine("resources/sounds/Mouse/Mouse 5.wav","any"));
+
+		hazardLines.get(3).add(new ChipLine("resources/sounds/Mouse/Mouse 1.wav","Confused"));
+		hazardLines.get(3).add(new ChipLine("resources/sounds/Mouse/Mouse 2.wav","Confused"));
+		hazardLines.get(3).add(new ChipLine("resources/sounds/Mouse/Mouse 3.wav","Serious"));
+		hazardLines.get(3).add(new ChipLine("resources/sounds/Mouse/Mouse 4.wav","Serious"));
+		hazardLines.get(3).add(new ChipLine("resources/sounds/Mouse/Mouse 5.wav","any"));
+
 		
 		
 		
@@ -114,6 +116,7 @@ public class GameController {
 		//put florada man lines here
 		
 		hazardLines.add(new ArrayList <ChipLine>());
+
 		hazardLines.get(7).add(new ChipLine("resources/sounds/Florida Man/Florida Man 1.wav","Relaxed"));
 		hazardLines.get(7).add(new ChipLine("resources/sounds/Florida Man/Florida Man 2.wav","Happy"));
 		hazardLines.get(7).add(new ChipLine("resources/sounds/Florida Man/Florida Man 3.wav","Angry"));
@@ -127,6 +130,8 @@ public class GameController {
 		//put cats lines here
 		
 		hazardLines.add(new ArrayList <ChipLine>());
+		//TEMP
+		hazardLines.get(8).add(new ChipLine("resources/sounds/Meteors/Meteors 1 Thoughts.wav","Angry"));
 		
 		hazardLines.get(8).add(new ChipLine("resources/sounds/Cats/Cats 1.wav","Confused"));
 		hazardLines.get(8).add(new ChipLine("resources/sounds/Cats/Cats 2.wav","Composed"));
@@ -153,58 +158,68 @@ public class GameController {
 		//TODO chip mcdale sprite and voiceline
 		ChipLine newLine = null;
 		
+		int carProb = 5;
+		int floodProb = carProb + 4; 
+		int meteorProb = floodProb + 4; 
+		int pointerProb = meteorProb + 3; 
+		int sharkProb = pointerProb + 5;
+		int tornadoProb = sharkProb + 5;
+		int drillProb = tornadoProb + 5;
+		int floridaProb = drillProb + 5;
+		int catProb = floridaProb + 5;
+		
+		int totalProb = catProb;
 		
 		Random r = new Random ();
-		int news = r.nextInt(9) + 1;
-		switch (news) {
-			case 1:
-				Car c = new Car ();
-				c.spawnHazard();
-				newLine = hazardLines.get(0).get(r.nextInt(hazardLines.get(0).size()));
-				break;
-			case 2:
-				Flood f = new Flood();
-				f.declare();
-				newLine = hazardLines.get(1).get(r.nextInt(hazardLines.get(1).size()));
-				break;
-			case 3:
-				Meteor m = new Meteor ();
-				m.spawnHazard();
-				
-				newLine = hazardLines.get(2).get(r.nextInt(hazardLines.get(2).size()));
-				break;
-//			case 4:
-//				Pointer p = new Pointer ();
-//				p.declare();
-//				newLine = hazardLines.get(3).get(r.nextInt(hazardLines.get(3).size()));
-//				break;
-			case 5:
-				Shark s = new Shark (r.nextBoolean());
-				s.declare();
-				newLine = hazardLines.get(4).get(r.nextInt(hazardLines.get(4).size()));
-				break;
-			case 6:
-				Tornado t = new Tornado (r.nextBoolean());
-				t.declare();
-				newLine = hazardLines.get(5).get(r.nextInt(hazardLines.get(5).size()));
-				break;
-			case 7:
-				Drill d = new Drill();
-				d.spawnHazard();
-				newLine = hazardLines.get(6).get(r.nextInt(hazardLines.get(6).size()));
-				break;
-//			case 8:
-//				FloridaMan florida = new FloridaMan();
-//				florida.declare();
-//				newLine = hazardLines.get(7).get(r.nextInt(hazardLines.get(7).size()));
-//				break;
-//			case 9:
-//				Cats cats = new Cats();
-//				cats.spawnHazard();
-//				newLine = hazardLines.get(8).get(r.nextInt(hazardLines.get(8).size()));
-//				break;
-				
+
+		int news = r.nextInt(totalProb);
+		
+		if (news <= carProb) {
+			Car c = new Car ();
+			c.spawnHazard();
+			newLine = hazardLines.get(0).get(r.nextInt(hazardLines.get(0).size()));
 		}
+		else if (news <= floodProb) {
+			Flood f = new Flood();
+			f.declare();
+			newLine = hazardLines.get(1).get(r.nextInt(hazardLines.get(1).size()));
+		}
+		else if (news <= meteorProb) {
+			Meteor m = new Meteor ();
+			m.spawnHazard();
+			newLine = hazardLines.get(2).get(r.nextInt(hazardLines.get(2).size()));
+		}
+		else if (news <= pointerProb) {
+			Pointer p = new Pointer ();
+			p.declare();
+			newLine = hazardLines.get(3).get(r.nextInt(hazardLines.get(3).size()));
+		}
+		else if (news <= sharkProb) {
+			Shark s = new Shark (r.nextBoolean());
+			s.declare();
+			newLine = hazardLines.get(4).get(r.nextInt(hazardLines.get(4).size()));
+		}
+		else if (news <= tornadoProb) {
+			Tornado t = new Tornado (r.nextBoolean());
+			t.declare();
+			newLine = hazardLines.get(5).get(r.nextInt(hazardLines.get(5).size()));
+		}
+		else if (news <= drillProb) {
+			Drill d = new Drill();
+			d.spawnHazard();
+			newLine = hazardLines.get(6).get(r.nextInt(hazardLines.get(6).size()));
+		}
+		else if (news <= floridaProb) {
+			FloridaMan florida = new FloridaMan();
+			florida.declare();
+			newLine = hazardLines.get(7).get(r.nextInt(hazardLines.get(7).size()));
+		}
+		else {
+			Cats cats = new Cats();
+			cats.spawnHazard();
+			newLine = hazardLines.get(8).get(r.nextInt(hazardLines.get(8).size()));
+		}
+		
 		if ((GameCode.getSoundPlayer().getClip(prevLine) == null || prevLine.equals("init")) && newLine != null) {
 			GameCode.getSoundPlayer().playSoundEffect(4F, newLine.linePath);
 			prevLine = newLine.linePath;
